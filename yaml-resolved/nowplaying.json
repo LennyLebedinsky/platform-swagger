@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Now playing provides rich metadata that is synchronized in time with\
-    \ the listening experience. Cooper here!"
+    \ the listening experience. Oops."
   version: "1.0.0"
   title: "NowPlaying API"
 host: "api.radiotime.com"
