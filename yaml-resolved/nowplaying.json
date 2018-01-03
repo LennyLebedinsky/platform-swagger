@@ -1,0 +1,84 @@
+---
+swagger: "2.0"
+info:
+  description: "Now playing provides rich metadata that is synchronized in time with\
+    \ the listening experience."
+  version: "1.0.0"
+  title: "NowPlaying API"
+host: "api.radiotime.com"
+basePath: "/profiles"
+schemes:
+- "http"
+paths:
+  /{guideId}/nowPlaying:
+    get:
+      summary: "Get now playing data for guide item"
+      description: "Describe the content which is currently playing"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "guideId"
+        in: "path"
+        description: "Id of guide item"
+        required: true
+        type: "string"
+      - name: "partnerId"
+        in: "query"
+        description: "Id of partner"
+        required: false
+        type: "string"
+      - name: "version"
+        in: "query"
+        description: "Version of partner"
+        required: false
+        type: "number"
+        format: "float"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/NowPlayingData"
+definitions:
+  NowPlayingData:
+    type: "object"
+    properties:
+      Header:
+        $ref: "#/definitions/NowPlayingData_Header"
+      Primary:
+        $ref: "#/definitions/NowPlayingData_Primary"
+    example:
+      Header:
+        Subtitle: "Subtitle"
+        Title: "Title"
+      Primary:
+        Subtitle: "Subtitle"
+        Title: "Title"
+        Image: "Image"
+        GuideId: "GuideId"
+  NowPlayingData_Header:
+    properties:
+      Title:
+        type: "string"
+      Subtitle:
+        type: "string"
+    description: "Represents the info to be displayed in now playing screen’s header\
+      \ bar"
+    example:
+      Subtitle: "Subtitle"
+      Title: "Title"
+  NowPlayingData_Primary:
+    properties:
+      GuideId:
+        type: "string"
+      Image:
+        type: "string"
+      Title:
+        type: "string"
+      Subtitle:
+        type: "string"
+    description: "Primary info of the item the user is playing"
+    example:
+      Subtitle: "Subtitle"
+      Title: "Title"
+      Image: "Image"
+      GuideId: "GuideId"
